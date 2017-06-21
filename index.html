@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>PHP Pipelines in the Wild</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section data-background="/images/solstice.jpg">
+            <br />
+            <h1 style="color:#777bb3">PHP Berckshire</h1>
+            <h3 style="color:#777bb3">21 Jun 2017</h3>
+            <br />
+            <br />
+            <p>https://www.meetup.com/PHP-Berkshire</p>
+            <br />
+            <p style="text-align: right"><a href="https://www.austinfraser.com/en/"><small>Sponsored by:&nbsp;&nbsp;&nbsp;<img src="images/austin-fraser.png" width="120px" style="vertical-align: middle" alt="Austin Fraser"></small></a>
+            </p>
+
+        </section>
+
+        <section>
+            <img src="/images/title.png" style="border:none !important;box-shadow:none !important;background:none !important">
+            <br />
+            <h1>Jenkins 2 + PHP</h1>
+            <br />
+            <h3>The PHP development toolchain exposed</h3>
+         </section>
+
+        <section>
+            <h2>Who am I</h2>
+            <ul>
+                <li>Luis Ferro</li>
+                <li class="fragment">Developer since... ZX Spectrum</li>
+                <li class="fragment">PHP developer since... 1998</li>
+                <li class="fragment">Archer (yes, i also shoot arrows :)</li>
+                <li class="fragment"><a href="https://twitter.com/lferro9000">@lferro9000</a></li>
+                <li class="fragment"><a href="https://github.com/lferro9000">github.com/lferro9000</a></li>
+            </ul>
+            <p class="fragment">
+                <small>This talk and all materials will be on github.</small>
+            </p>
+        </section>
+
+        <section>
+            <img src="/images/jenkins.png">
+            <h2>Jenkins</h2>
+            <p>is like a good butler, runs things for you</p>
+            <p><a href="https://jenkins.io">jenkins.io</a></p>
+        </section>
+
+        <section>
+            <h2>Jenkins History</h2>
+            <ul>
+                <li>The Hudson project at Sun Microsystems</li>
+                <li class="fragment">First release in Feb 2005</li>
+                <br/>
+                <li class="fragment">Oracle brought Sun in Apr 2009</li>
+                <li class="fragment">In Jan 2011, the community renamed the project Jenkins</li>
+                <br/>
+                <li class="fragment">On April 2016, v2 was released with Pipelines by default</li>
+            </ul>
+            <p class="fragment">
+                <small>In the mean time Hudson keeps going under Eclipse / Oracle banners.</small>
+            </p>
+
+        </section>
+
+        <section style="text-align: left">
+            <h2 style="text-align: center">Instalation</h2>
+            <li class="fragment">
+                Available in <a href="https://jenkins.io/download/">https://jenkins.io/download/</a>
+            </li>
+            <li class="fragment">
+                Installers for: Arch Linux, Docker, FreeBSD, Gentoo, Mac OS X, OpenBSD, openSUSE, Red Hat/Fedora/CentOS, Ubuntu/Debian, Windows
+            </li>
+            <li class="fragment">
+                Generic Java package (.war, on any JVM environment)
+            </li>
+        </section>
+
+        <section>
+            <h2>Configuration (1/5)</h2>
+            <p>
+                Activate the software
+            </p>
+            <img src="/images/activation.png">
+        </section>
+
+        <section>
+            <h2>Configuration (2/5)</h2>
+            <p>
+                Install the base plugins
+            </p>
+            <img src="/images/base-plugins.png">
+        </section>
+
+        <section>
+            <h2>Configuration (3/5)</h2>
+            <p>
+                It does take some time
+            </p>
+            <img src="/images/instalation.png">
+        </section>
+
+        <section>
+            <h2>Configuration (4/5)</h2>
+            <p>
+                Create first administrator
+            </p>
+            <img src="/images/create-first-user.png">
+        </section>
+
+        <section>
+            <h2>Configuration (5/5)</h2>
+            <p>
+                Is ready!
+            </p>
+            <p class="fragment">
+                Sort of :)
+            </p>
+            <img src="/images/jenkins-ready.png">
+        </section>
+
+        <section>
+            <h2>Update plugins</h2>
+            <p>
+                Ensure that all your plugins are updated
+            </p>
+            <img src="/images/update-plugins.png">
+        </section>
+
+        <section>
+            <h2>Update plugins</h2>
+            <p>
+                Ensure that all your plugins are updated
+            </p>
+            <img src="/images/outdated-plugins.png">
+            <p class="fragment">
+                <small>Always ensure that the elapsed time from last check is recent.</small>
+            </p>
+        </section>
+
+        <section>
+            <h2>Update and restart</h2>
+            <p>
+                Restart jenkins with the update of all plugins
+            </p>
+            <img src="/images/update-and-restart.png">
+        </section>
+
+        <section>
+            <h2>Jenkins is ready</h2>
+            <p>
+                Jenkins is now ready, updated and secured
+            </p>
+            <img src="/images/jenkins-ready-and-secured.png">
+        </section>
+
+        <section>
+            <h2>Jenkins Pipelines</h2>
+            <p>
+                This is the project we are going to add to our pipelines
+            </p>
+            <img src="/images/jenkins-project.png">
+        </section>
+
+        <section>
+            <h2>New Pipeline</h2>
+            <p>
+                Go to dashboard, press +New to add a new item<br>
+                Then "pipeline", "Ok", and "save"
+            </p>
+            <img src="/images/new-pipeline.png" height="400">
+        </section>
+
+        <section>
+            <h2>Save and Build</h2>
+            <p>
+                On the item configuration, save it. Then press "build"
+            </p>
+            <img src="/images/empty-build.png">
+        </section>
+
+        <section>
+            <h2>Pipelines and stages</h2>
+            <p>
+                This is the pipeline box where we define everything
+            </p>
+            <p>
+                It's implemented with the Apache Groovie language
+            </p>
+            <p style="text-align: left">
+                Groovie: <a href="http://groovy-lang.org/">http://groovy-lang.org/</a><br>
+                Pipelines: <a href="https://jenkins.io/doc/pipeline/steps/">https://jenkins.io/doc/pipeline/steps/</a><br>
+                Syntax: <a href="https://jenkins.io/doc/book/pipeline/jenkinsfile/">https://jenkins.io/doc/book/pipeline/jenkinsfile/</a><br>
+            </p>
+        </section>
+
+        <section>
+            <h2>Check simple pipeline</h2>
+            <p>
+                php -v
+            </p>
+            <img src="/images/pipeline-console.png">
+        </section>
+
+        <section>
+            <h2>Composer pipeline</h2>
+            <p>
+                composer
+            </p>
+            <img src="/images/composer-broken.png">
+        </section>
+
+        <section>
+            <h2>Pipeline result (1/2)</h2>
+            <p>
+                composer is broken
+            </p>
+            <img src="/images/composer-broken1.png">
+        </section>
+
+        <section>
+            <h2>Pipeline result (2/2)</h2>
+            <p>
+                composer is broken
+            </p>
+            <img src="/images/composer-broken2.png">
+        </section>
+
+        <section>
+            <h2>Fix composer (1/5)</h2>
+            <p>
+                Go to "Manage Jenkins", then "Manage Nodes"
+            </p>
+            <img src="/images/nodes.png">
+        </section>
+
+        <section>
+            <h2>Fix composer (2/5)</h2>
+            <p>
+                Select the master node
+            </p>
+            <img src="/images/master-node.png">
+        </section>
+
+        <section>
+            <h2>Fix composer (3/5)</h2>
+            <p>
+                On a terminal, issue "export" to check what is on the path
+            </p>
+            <img src="/images/terminal-path.png">
+        </section>
+
+        <section>
+            <h2>Fix composer (4/5)</h2>
+            <p>
+                Edit the node and add an environment variable for path
+            </p>
+            <img src="/images/path-on-jenkins.png">
+        </section>
+
+        <section>
+            <h2>Fix composer (5/5)</h2>
+            <p>
+                Rerun the build
+            </p>
+            <img src="/images/rerun-build.png">
+        </section>
+
+        <section>
+            <h2>phpunit and behat</h2>
+            <p>
+                Running PHPUnit and Behat
+            </p>
+            <img src="/images/phpunit-behat.png">
+        </section>
+
+        <section>
+            <h2>Jenkinsfile examples</h2>
+            <p>
+                <a href="https://github.com/dalalv/jenkinsfiles">https://github.com/dalalv/jenkinsfiles</a><br>
+            </p>
+            <p>
+                Use github search power: <a href="https://github.com/search?utf8=%E2%9C%93&q=JenkinsFile&type=">https://github.com/search?utf8=%E2%9C%93&q=JenkinsFile&type=</a>
+            </p>
+        </section>
+
+        <section>
+            <h2>Some references:</h2>
+            <p>
+                https://www.sitepoint.com/re-introducing-jenkins-automated-testing-with-pipelines/
+            </p>
+            <p>
+                https://medium.com/garbage-collection/jenkins-pipelines-what-i-wish-i-knew-starting-out-6e3d4eb2ff5b
+            </p>
+        </section>
+
+        <section>
+            <h2>Have fun with Jenkins Pipelines</h2>
+            <img src="images/evil-jenkins.png">
+        </section>
+
+        <section style="text-align: left;">
+            <h1>THE END</h1>
+            <p>
+                - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a><br>
+                - <a href="http://www.fontspace.com/jonathan-paterson/pipe-dream">Title Font - Pipe Dream by Jonathan Paterson</a><br>
+                - <a href="https://www.flickr.com/photos/vicwj/2148722919/">Solstice image - by Vicky WJ, CC 2.0</a><br>
+                - <a href="https://creativecommons.org/licenses/by/2.0/">CC 2.0</a><br>
+            </p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
