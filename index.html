@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>PHP Pipelines in the Wild</title>
+    <title>PHPipelines in the Wild</title>
 
-    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-    <meta name="author" content="Hakim El Hattab">
+    <meta name="description" content="Jenkins 2 Pipelines with PHP">
+    <meta name="author" content="Luis Ferro">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -59,17 +59,16 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-        <section data-background="/images/solstice.jpg">
+        <section data-background="/images/xray.jpg">
             <br />
-            <h1 style="color:#777bb3">PHP Essex</h1>
-            <h3 style="color:#777bb3">20 Sept 2017</h3>
+            <h1 style="color:#777bb3">PHP SW</h1>
+            <h3 style="color:#777bb3">08 Nov 2017</h3>
             <br />
             <br />
-            <p>https://www.meetup.com/PHP-Essex</p>
+            <p>https://www.meetup.com/php-sw</p>
             <br />
-            <p style="text-align: right"><a href="https://www.theub.co.uk/"><small>Hosted in:&nbsp;&nbsp;&nbsp;The United Brethren pub</small></a>
+            <p><a href="http://www.basekit.com/"><small>Hosted in:&nbsp;&nbsp;&nbsp;BaseKit, Bristol</small></a>
             </p>
-
         </section>
 
         <section>
@@ -105,18 +104,42 @@
         <section>
             <h2>Jenkins History</h2>
             <ul>
-                <li>The Hudson project at Sun Microsystems</li>
-                <li class="fragment">First release in Feb 2005</li>
-                <br/>
-                <li class="fragment">Oracle brought Sun in Apr 2009</li>
-                <li class="fragment">In Jan 2011, the community renamed the project Jenkins</li>
-                <br/>
-                <li class="fragment">On April 2016, v2 was released with Pipelines by default</li>
+                <li>We had a buttler called Hudson</li>
+                <li class="fragment">He worked through an agency called SUN</li>
+                <li class="fragment">Got "fired" in 2011, when SUN was brought by Oracle</li>
+                <li class="fragment">Jenkins was "hired" from an "Open Agency"</li>
+                <li class="fragment">Then we sent Jenkins to a training of "Pipelines"</li>
             </ul>
-            <p class="fragment">
-                <small>In the mean time Hudson keeps going under Eclipse / Oracle banners.</small>
-            </p>
+        </section>
 
+        <section>
+            <h2>Why Jenkins</h2>
+            <ul>
+                <li>It automates everything</li>
+                <li class="fragment">Runs tasks when there is a code change</li>
+                <li class="fragment">Builds our software</li>
+                <li class="fragment">Tests our software</li>
+                <li class="fragment">Can even deploy our software!</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Jenkins 1 and PHP</h2>
+            <ul>
+                <li class="fragment">There is a good guide for Jenkins 1</li>
+                <li class="fragment">http://jenkins-php.org/</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Jenkins 2 and PHP</h2>
+            <ul>
+                <li class="fragment">There wasn't much apart from this gist</li>
+                <li class="fragment">https://goo.gl/uo84tM</li>
+                <li class="fragment">Based on it, i've written this small guide:</li>
+                <li class="fragment">https://goo.gl/AzNSwe</li>
+                <li class="fragment">And doing this talk :)</li>
+            </ul>
         </section>
 
         <section style="text-align: left">
@@ -130,84 +153,6 @@
             <li class="fragment">
                 Generic Java package (.war, on any JVM environment)
             </li>
-        </section>
-
-        <section>
-            <h2>Configuration (1/5)</h2>
-            <p>
-                Activate the software
-            </p>
-            <img src="/images/activation.png">
-        </section>
-
-        <section>
-            <h2>Configuration (2/5)</h2>
-            <p>
-                Install the base plugins
-            </p>
-            <img src="/images/base-plugins.png">
-        </section>
-
-        <section>
-            <h2>Configuration (3/5)</h2>
-            <p>
-                It does take some time
-            </p>
-            <img src="/images/instalation.png">
-        </section>
-
-        <section>
-            <h2>Configuration (4/5)</h2>
-            <p>
-                Create first administrator
-            </p>
-            <img src="/images/create-first-user.png">
-        </section>
-
-        <section>
-            <h2>Configuration (5/5)</h2>
-            <p>
-                Is ready!
-            </p>
-            <p class="fragment">
-                Sort of :)
-            </p>
-            <img src="/images/jenkins-ready.png">
-        </section>
-
-        <section>
-            <h2>Update plugins</h2>
-            <p>
-                Ensure that all your plugins are updated
-            </p>
-            <img src="/images/update-plugins.png">
-        </section>
-
-        <section>
-            <h2>Update plugins</h2>
-            <p>
-                Ensure that all your plugins are updated
-            </p>
-            <img src="/images/outdated-plugins.png">
-            <p class="fragment">
-                <small>Always ensure that the elapsed time from last check is recent.</small>
-            </p>
-        </section>
-
-        <section>
-            <h2>Update and restart</h2>
-            <p>
-                Restart jenkins with the update of all plugins
-            </p>
-            <img src="/images/update-and-restart.png">
-        </section>
-
-        <section>
-            <h2>Jenkins is ready</h2>
-            <p>
-                Jenkins is now ready, updated and secured
-            </p>
-            <img src="/images/jenkins-ready-and-secured.png">
         </section>
 
         <section>
@@ -503,6 +448,9 @@
             <p>
                 https://medium.com/garbage-collection/jenkins-pipelines-what-i-wish-i-knew-starting-out-6e3d4eb2ff5b
             </p>
+            <p>
+                https://medium.com/@lferro9000/elephpant-in-the-pipeline-ci-8164579d01cc
+            </p>
         </section>
 
         <section>
@@ -514,9 +462,10 @@
             <h1>THE END</h1>
             <p>
                 - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a><br>
-                - <a href="http://www.fontspace.com/jonathan-paterson/pipe-dream">Title Font - Pipe Dream by Jonathan Paterson</a><br>
-                - <a href="https://www.flickr.com/photos/vicwj/2148722919/">Solstice image - by Vicky WJ, CC 2.0</a><br>
+                - <a href="https://www.flickr.com/photos/asjaboros/3021251711/">X Ray - by Asja Boroš, CC 2.0</a><br>
                 - <a href="https://creativecommons.org/licenses/by/2.0/">CC 2.0</a><br>
+                - <a href="https://jenkins.io/">Jenkins Artwork, CC BY-SA 3.0</a>
+                - <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
             </p>
         </section>
 
